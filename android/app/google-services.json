@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "632262486451",
+    "project_id": "carikp",
+    "storage_bucket": "carikp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632262486451:android:55825dec5dbedfdf00c3c6",
+        "android_client_info": {
+          "package_name": "com.example.cari_kp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfVLEVW0dQjbC9oD0xnYxI8genNLsfUko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

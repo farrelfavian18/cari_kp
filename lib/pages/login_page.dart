@@ -41,15 +41,14 @@ class LoginPage extends StatelessWidget {
                   fontSize: 16,
                 ),
               ),
-
               const SizedBox(height: 30),
+
               //TODO username field
               MyTextField(
                 controller: usernameController,
                 hintText: 'Username',
                 obscureText: false,
               ),
-
               const SizedBox(height: 10),
 
               //TODO password field
@@ -58,8 +57,8 @@ class LoginPage extends StatelessWidget {
                 hintText: 'Password',
                 obscureText: true,
               ),
-
               const SizedBox(height: 10),
+
               //TODO lupa password?
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -73,13 +72,12 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-
               const SizedBox(height: 30),
+
               //TODO tombol sign in
               MyButton(
                 onTap: signUserIn,
               ),
-
               const SizedBox(height: 10),
 
               //TODO continue with ->
@@ -119,6 +117,7 @@ class LoginPage extends StatelessWidget {
                   SquareButton(imagePath: 'lib/images/google.png')
                 ],
               ),
+              const SizedBox(width: 50),
 
               //TODO Register??
               Row(

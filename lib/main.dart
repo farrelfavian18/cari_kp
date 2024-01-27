@@ -1,5 +1,6 @@
+import 'package:cari_kp/pages/auth_page.dart';
 import 'package:flutter/material.dart';
-import 'package:cari_kp/pages/login_page.dart';
+// import 'package:cari_kp/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -16,13 +17,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       // home: Scaffold(
       //   body: Center(
       //     child: Text('Cari KP'),
       //   ),
       // ),
-      home: LoginPage(),
+
+      //Login Page
+      // home: LoginPage(),
+      home: AuthPage(),
     );
   }
 }

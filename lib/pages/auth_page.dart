@@ -1,3 +1,4 @@
+import 'package:cari_kp/pages/dashboard_page.dart';
 import 'package:cari_kp/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           //user login
           if (snapshot.hasData) {
-            return Dashboard();
+            return DashboardPage();
           }
 
           //user tidak login

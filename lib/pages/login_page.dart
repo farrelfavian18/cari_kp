@@ -1,17 +1,21 @@
 import 'package:cari_kp/components/my_textfield.dart';
 import 'package:cari_kp/components/my_button.dart';
 import 'package:cari_kp/components/square_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   //text editing controller
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   //method sign in
-  void signUserIn() {}
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +47,10 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
 
-              //TODO username field
+              //TODO email field
               MyTextField(
-                controller: usernameController,
-                hintText: 'Username',
+                controller: emailController,
+                hintText: 'Email',
                 obscureText: false,
               ),
               const SizedBox(height: 10),

@@ -74,7 +74,7 @@ class DashboardPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15),
                                 color: Colors.white,
                                 image: const DecorationImage(
-                                  image: AssetImage("images/profil.png"),
+                                  image: AssetImage("lib/images/profil.png"),
                                 ),
                               ),
                             ),

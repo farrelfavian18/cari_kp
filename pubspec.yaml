@@ -22,3 +22,6 @@ flutter:
 
   assets:
       - lib/images/
+      - lib/images/07.jpg
+      - lib/images/08.jpg
+      

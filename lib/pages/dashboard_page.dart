@@ -19,6 +19,8 @@ class DashboardPage extends StatelessWidget {
     "lib/images/04.jpg",
     "lib/images/05.jpg",
     "lib/images/06.jpg",
+    "lib/images/07.jpg",
+    "lib/images/08.jpg",
   ];
 
   List title = [
@@ -28,6 +30,8 @@ class DashboardPage extends StatelessWidget {
     "PT.Jujur Kinaryo Projo",
     "PT.Sterling Tulus cemerlang",
     "PT.Putra Jaya Wibisono",
+    "PT.Sriwijaya Air",
+    "PT.Garuda",
   ];
 
   @override
@@ -104,7 +108,7 @@ class DashboardPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(
                           top: 20,
                           left: 20,
@@ -164,7 +168,7 @@ class DashboardPage extends StatelessWidget {
                           mainAxisSpacing: 25,
                         ),
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: imgData.length,
                         itemBuilder: (context, index) {
                           return InkWell(

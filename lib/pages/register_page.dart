@@ -4,21 +4,22 @@ import 'package:cari_kp/components/square_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   //text editing controller
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-  //method sign in
-  void signUserIn() async {
+  //method sign up
+  void signUserUp() async {
     //loading
     showDialog(
       context: context,
@@ -29,17 +30,24 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
 
-    //try sign in
+    //try sign up
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      if (passwordController.text == confirmPasswordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+      } else {
+        //pesan error
+        showErrorMessage("Password tidak sama!");
+      }
+
       //loading
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //looading lagi
       Navigator.pop(context);
+      //pesan eror
       showErrorMessage(e.code);
     }
   }
@@ -78,21 +86,14 @@ class _LoginPageState extends State<LoginPage> {
 
                 //TODO logo
                 const Icon(
-                  Icons.search_outlined,
+                  Icons.cookie,
                   size: 100,
-                ),
-                const Text(
-                  'Cari KP',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-                  ),
                 ),
                 const SizedBox(height: 50),
 
                 //TODO welcomeback text
                 Text(
-                  'Selamat datang di Cari KP!',
+                  'Daftar Akun Cari KP mu!',
                   style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 16,
@@ -116,25 +117,33 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 10),
 
-                //TODO lupa password?
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Lupa Passowrd?',
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                    ],
-                  ),
+                //TODO confirm password
+                MyTextField(
+                  controller: confirmPasswordController,
+                  hintText: 'Confirm Password',
+                  obscureText: true,
                 ),
+                const SizedBox(height: 10),
+
+                // //TODO lupa password?
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.end,
+                //     children: [
+                //       Text(
+                //         'Lupa Passowrd?',
+                //         style: TextStyle(color: Colors.grey[600]),
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 const SizedBox(height: 30),
 
                 //TODO tombol sign in
                 MyButton(
-                  text: "Login",
-                  onTap: signUserIn,
+                  text: "Daftar",
+                  onTap: signUserUp,
                 ),
                 const SizedBox(height: 10),
 
@@ -167,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(width: 80),
 
-                //TODO google sign in buttons
+                //TODO google sign up buttons
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -182,14 +191,14 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Belum daftar?",
+                      "Sudah punya akun?",
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
                       onTap: widget.onTap,
                       child: const Text(
-                        "Daftar disini!",
+                        "Login disini",
                         style: TextStyle(
                             color: Colors.blue, fontWeight: FontWeight.bold),
                       ),

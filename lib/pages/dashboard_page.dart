@@ -1,3 +1,4 @@
+import 'package:cari_kp/pages/navbar_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,9 @@ class DashboardPage extends StatelessWidget {
   DashboardPage({super.key});
 
   final user = FirebaseAuth.instance.currentUser!;
+  void signOutUser() {
+    FirebaseAuth.instance.signOut();
+  }
 
   var height, width;
 
@@ -28,9 +32,29 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     actions: [
+    //       IconButton(
+    //         onPressed: signOutUser,
+    //         icon: Icon(Icons.logout_outlined),
+    //       )
+    //     ],
+    //   ),
+    //   body: Center(child: Text("Logged In: " + user.email!)),
+    // );
+
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
+        //test app bar
+        drawer: NavBarPage(),
+        appBar: AppBar(
+          actions: [
+            IconButton(
+                onPressed: signOutUser, icon: Icon(Icons.logout_outlined))
+          ],
+        ),
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Container(
@@ -55,18 +79,17 @@ class DashboardPage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            InkWell(
-                              onTap: () {},
-                              child: const Icon(
-                                Icons.sort,
-                                color: Colors.white,
-                                size: 40,
-                              ),
-                            ),
-                            Text(
-                              user.email!,
-                              style: const TextStyle(color: Colors.white),
-                            ),
+                            // InkWell(
+                            //   onTap: () {},
+                            //   child: const Icon(
+                            //     Icons.sort,
+                            //     color: Colors.white,
+                            //     size: 40,
+                            //   ),
+                            // ),
+                            Text("Selamat datang, " + user.email!,
+                                style: TextStyle(color: Colors.white)),
+
                             Container(
                               height: 50,
                               width: 50,
@@ -112,7 +135,7 @@ class DashboardPage extends StatelessWidget {
                               "Tempat Kerja Praktik rekomendasi untuk mu!",
                               style: TextStyle(
                                 fontSize: 19,
-                                color: Colors.white54,
+                                color: Colors.white70,
                                 letterSpacing: 1,
                               ),
                             )
@@ -124,7 +147,7 @@ class DashboardPage extends StatelessWidget {
                 ),
                 SingleChildScrollView(
                   child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
@@ -134,7 +157,8 @@ class DashboardPage extends StatelessWidget {
                       width: width,
                       padding: EdgeInsets.only(bottom: 20),
                       child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           childAspectRatio: 1.1,
                           mainAxisSpacing: 25,
@@ -146,12 +170,12 @@ class DashboardPage extends StatelessWidget {
                           return InkWell(
                             onTap: () {},
                             child: Container(
-                              margin: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.symmetric(
                                   vertical: 8, horizontal: 20),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.white,
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
                                       color: Colors.black26,
                                       spreadRadius: 1,
@@ -168,7 +192,7 @@ class DashboardPage extends StatelessWidget {
                                   ),
                                   Text(
                                     title[index],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                     ),

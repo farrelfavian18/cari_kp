@@ -1,7 +1,8 @@
 import 'package:cari_kp/pages/dashboard_page.dart';
-import 'package:cari_kp/pages/login_page.dart';
+// import 'package:cari_kp/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cari_kp/pages/login_or_register_page.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -19,7 +20,7 @@ class AuthPage extends StatelessWidget {
 
           //user tidak login
           else {
-            return LoginPage();
+            return LoginOrRegisterPage();
           }
         },
       ),
